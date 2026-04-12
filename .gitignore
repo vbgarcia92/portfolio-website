@@ -1,0 +1,4 @@
+.DS_Store        # Mac system file
+Thumbs.db        # Windows system file
+*.log            # Log files
+node_modules/    # If you ever use Node.js, don't upload dependencies
