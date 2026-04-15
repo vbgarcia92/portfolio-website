@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Prix do Pontinho</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Background decorations -->
+  <div class="felt-pattern"></div>
+  <div class="corner-suit top-left">♠</div>
+  <div class="corner-suit top-right">♥</div>
+  <div class="corner-suit bottom-left">♣</div>
+  <div class="corner-suit bottom-right">♦</div>
+
+  <div class="container">
+
+    <!-- Setup Screen -->
+    <div id="setup-screen" class="screen active">
+      <div class="title-card">
+        <div class="title-suits">♠ ♥ ♣ ♦</div>
+        <h1 class="game-title">Grand Prix<br/><span>do Pontinho</span></h1>
+        <div class="title-suits">♦ ♣ ♥ ♠</div>
+      </div>
+
+      <div class="setup-card card">
+        <h2 class="section-title">Enter Players</h2>
+        <div class="player-inputs">
+          <div class="player-input-group player-1-group">
+            <label for="player1-name">
+              <span class="suit-icon red">♥</span> Player 1
+            </label>
+            <input type="text" id="player1-name" placeholder="Player 1 name" maxlength="20" />
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="player-input-group player-2-group">
+            <label for="player2-name">
+              <span class="suit-icon">♠</span> Player 2
+            </label>
+            <input type="text" id="player2-name" placeholder="Player 2 name" maxlength="20" />
+          </div>
+        </div>
+        <button id="start-game-btn" class="btn btn-primary">Deal Cards &amp; Start</button>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="game-header">
+        <div class="title-badge">
+          <span class="suit-small">♠</span>
+          <span class="game-title-small">Grand Prix do Pontinho</span>
+          <span class="suit-small red">♥</span>
+        </div>
+      </div>
+
+      <!-- Scoreboard -->
+      <div class="scoreboard card">
+        <div class="score-block player-1-block">
+          <div class="player-name" id="p1-display-name">Player 1</div>
+          <div class="score-value" id="p1-score">0</div>
+          <div class="score-label">points</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar p1-bar" id="p1-bar"></div>
+          </div>
+        </div>
+
+        <div class="score-divider">
+          <div class="round-info">
+            <div class="round-label">Round</div>
+            <div class="round-number" id="round-display">1</div>
+          </div>
+          <div class="divider-suits">♦</div>
+        </div>
+
+        <div class="score-block player-2-block">
+          <div class="player-name" id="p2-display-name">Player 2</div>
+          <div class="score-value" id="p2-score">0</div>
+          <div class="score-label">points</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar p2-bar" id="p2-bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Round Input -->
+      <div class="round-card card" id="round-card">
+        <h2 class="section-title" id="round-title">Round 1</h2>
+
+        <div class="round-form">
+          <div class="points-input-group">
+            <label for="points-input">Points this round</label>
+            <input type="number" id="points-input" min="1" max="99" placeholder="0" />
+          </div>
+
+          <div class="loser-select-group">
+            <p class="loser-label">Who lost this round?</p>
+            <div class="loser-options">
+              <label class="loser-option" id="loser-opt-1">
+                <input type="radio" name="loser" value="1" />
+                <span class="loser-btn">
+                  <span class="suit-icon red">♥</span>
+                  <span id="loser-name-1">Player 1</span>
+                </span>
+              </label>
+              <label class="loser-option" id="loser-opt-2">
+                <input type="radio" name="loser" value="2" />
+                <span class="loser-btn">
+                  <span class="suit-icon">♠</span>
+                  <span id="loser-name-2">Player 2</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <button id="submit-round-btn" class="btn btn-primary">Submit Round</button>
+        </div>
+      </div>
+
+      <!-- Round History -->
+      <div class="history-card card">
+        <h3 class="section-title small">Round History</h3>
+        <div class="history-table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Round</th>
+                <th id="hist-p1-name">Player 1</th>
+                <th id="hist-p2-name">Player 2</th>
+              </tr>
+            </thead>
+            <tbody id="history-body">
+              <!-- rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winner Screen -->
+    <div id="winner-screen" class="screen">
+      <div class="winner-card card">
+        <div class="fireworks">
+          <div class="fw fw1">♠</div>
+          <div class="fw fw2">♥</div>
+          <div class="fw fw3">♦</div>
+          <div class="fw fw4">♣</div>
+          <div class="fw fw5">♠</div>
+          <div class="fw fw6">♥</div>
+        </div>
+        <div class="trophy">🏆</div>
+        <h2 class="winner-title">Congratulations</h2>
+        <p class="winner-name" id="winner-name-display"></p>
+        <p class="winner-subtitle">you are the pontinho winner tonight!</p>
+        <div class="winner-suits">♠ ♥ ♣ ♦</div>
+        <div class="final-scores">
+          <div class="final-score-item">
+            <span class="fs-name" id="fs-p1-name"></span>
+            <span class="fs-score" id="fs-p1-score"></span>
+          </div>
+          <div class="final-score-item">
+            <span class="fs-name" id="fs-p2-name"></span>
+            <span class="fs-score" id="fs-p2-score"></span>
+          </div>
+        </div>
+        <button id="new-game-btn" class="btn btn-primary">New Game</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
