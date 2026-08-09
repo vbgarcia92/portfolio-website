@@ -2,3 +2,6 @@
 Thumbs.db        # Windows system file
 *.log            # Log files
 node_modules/    # If you ever use Node.js, don't upload dependencies
+
+.claude/settings.local.json    # Local Claude Code settings (personal)
+.claude/worktrees/             # Local Claude Code worktrees

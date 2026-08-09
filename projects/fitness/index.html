@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness &amp; Wellness Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="phone">
+
+    <header class="app-header">
+      <h1 id="header-title">Home</h1>
+    </header>
+
+    <main class="app-body">
+
+      <!-- Home -->
+      <section id="view-home" class="view active">
+        <div class="card day-counter">
+          <p class="day-label">75 Hard</p>
+          <p class="day-number" id="day-number">—</p>
+          <p class="day-sub" id="day-sub">Not started</p>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Today's Checklist</h2>
+          <div id="checklist-container">
+            <p class="empty-state">Checklist arrives in Phase 3.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Top Lifts</h2>
+          <div id="home-lifts-container">
+            <p class="empty-state">No lifts yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lifts -->
+      <section id="view-lifts" class="view">
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">My Lifts</h2>
+            <button id="add-lift-toggle" class="btn btn-small">+ Add</button>
+          </div>
+
+          <form id="add-lift-form" class="inline-form hidden">
+            <input type="text" id="new-lift-name" placeholder="Lift name (e.g. Bench Press)"
+                   maxlength="30" autocomplete="off" />
+            <div class="form-row">
+              <input type="number" id="new-lift-weight" placeholder="Weight (kg)" min="0" step="0.5" />
+              <input type="number" id="new-lift-reps" placeholder="Reps" min="1" step="1" />
+            </div>
+            <p class="form-error hidden" id="add-lift-error"></p>
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost" id="cancel-lift-btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Lift</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="lifts-container"></div>
+      </section>
+
+      <!-- Workouts -->
+      <section id="view-workouts" class="view">
+        <div class="card">
+          <h2 class="card-title">Upcoming Workouts</h2>
+          <div id="workouts-container">
+            <p class="empty-state">Nothing scheduled yet.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-view="home">
+        <span class="nav-icon">✓</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-btn" data-view="lifts">
+        <span class="nav-icon">🏋</span>
+        <span class="nav-label">Lifts</span>
+      </button>
+      <button class="nav-btn" data-view="workouts">
+        <span class="nav-icon">📅</span>
+        <span class="nav-label">Workouts</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/lifts.js"></script>
+  <script src="js/seventyfive.js"></script>
+  <script src="js/workouts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
