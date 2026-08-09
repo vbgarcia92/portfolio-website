@@ -33,6 +33,7 @@ const App = (function () {
     });
 
     Lifts.bind(api);
+    SeventyFive.bindEvents(api);
 
     api.save();
     api.renderAll();

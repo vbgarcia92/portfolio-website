@@ -18,17 +18,23 @@
 
       <!-- Home -->
       <section id="view-home" class="view active">
+        <div id="reset-banner" class="banner hidden">
+          <p id="reset-banner-text"></p>
+          <button id="reset-banner-dismiss" class="btn btn-ghost btn-small">Dismiss</button>
+        </div>
+
         <div class="card day-counter">
           <p class="day-label">75 Hard</p>
           <p class="day-number" id="day-number">—</p>
           <p class="day-sub" id="day-sub">Not started</p>
+          <div class="progress-track">
+            <div class="progress-fill" id="day-progress-bar"></div>
+          </div>
         </div>
 
         <div class="card">
           <h2 class="card-title">Today's Checklist</h2>
-          <div id="checklist-container">
-            <p class="empty-state">Checklist arrives in Phase 3.</p>
-          </div>
+          <div id="checklist-container"></div>
         </div>
 
         <div class="card">
