@@ -429,6 +429,126 @@ body {
   text-decoration: line-through;
 }
 
+/* === WORKOUTS === */
+.group-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--text-dim);
+  margin: 0.35rem 0 0.5rem;
+}
+
+.workout-card {
+  margin-bottom: 0.75rem;
+}
+
+.workout-card.is-done {
+  opacity: 0.62;
+}
+
+.workout-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.workout-name {
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.workout-card.is-done .workout-name {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.workout-date {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  color: var(--text-dim);
+}
+
+.workout-date.is-overdue {
+  background: #3a1d1d;
+  border-color: #6b2b2b;
+  color: #fecaca;
+}
+
+.ex-list {
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.ex-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+
+.ex-row:last-child {
+  border-bottom: none;
+}
+
+.ex-name {
+  word-break: break-word;
+}
+
+.ex-detail {
+  flex-shrink: 0;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+.workout-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Exercise rows inside the add form */
+.exercise-row {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.exercise-row [data-action="remove-exercise"] {
+  flex: 0 0 auto;
+  width: 44px;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* === EST. 1RM === */
+.lift-orm {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 0.1rem;
+}
+
+.h-orm {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
 /* === HOME MINI LIFT LIST === */
 .mini-lift-list {
   list-style: none;

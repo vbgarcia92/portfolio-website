@@ -34,6 +34,7 @@ const App = (function () {
 
     Lifts.bind(api);
     SeventyFive.bindEvents(api);
+    Workouts.bindEvents(api);
 
     api.save();
     api.renderAll();
