@@ -21,6 +21,24 @@ const Lifts = {
     return pr === null || weight > pr;
   },
 
+  // Epley. The formula is only meaningful above a single, so a 1-rep set is
+  // returned as-is rather than inflated to weight * 31/30.
+  estimatedOneRm(weight, reps) {
+    if (!weight || !reps || reps < 1) return null;
+    if (reps === 1) return weight;
+    return weight * (1 + reps / 30);
+  },
+
+  // Best estimated 1RM across all logged entries — a heavy triple can beat
+  // a heavier single, so this is not always the PR weight.
+  bestOneRm(lift) {
+    if (!lift.history.length) return null;
+    return lift.history.reduce((best, e) => {
+      const est = this.estimatedOneRm(e.weight, e.reps);
+      return est !== null && (best === null || est > best) ? est : best;
+    }, null);
+  },
+
   newId() {
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
   },
@@ -89,13 +107,23 @@ const Lifts = {
       ? `<div class="lift-pr">PR ${this.formatWeight(pr)} kg</div>`
       : '';
 
+    const bestOrm = this.bestOneRm(lift);
+    const ormLine = bestOrm !== null
+      ? `<p class="lift-orm">Best est. 1RM ${this.formatWeight(Math.round(bestOrm * 10) / 10)} kg</p>`
+      : '';
+
     const historyRows = [...lift.history]
       .sort((a, b) => (a.date < b.date ? 1 : -1))
       .map((e) => {
         const isPrRow = e.weight === pr;
+        const est = this.estimatedOneRm(e.weight, e.reps);
+        const estLabel = est !== null
+          ? `<span class="h-orm">1RM ~${this.formatWeight(Math.round(est * 10) / 10)}</span>`
+          : '';
         return `<li class="history-row${isPrRow ? ' is-pr' : ''}">
             <span class="h-date">${this.formatDate(e.date)}</span>
             <span class="h-weight">${this.formatWeight(e.weight)} kg × ${e.reps}</span>
+            ${estLabel}
             ${isPrRow ? '<span class="h-badge">PR</span>' : ''}
           </li>`;
       })
@@ -107,6 +135,7 @@ const Lifts = {
           <div class="lift-info">
             <h3 class="lift-name">${name}</h3>
             <p class="lift-current">${current}</p>
+            ${ormLine}
           </div>
           ${prBadge}
         </div>
@@ -220,6 +249,9 @@ const Lifts = {
     });
 
     cancel.addEventListener('click', closeAddForm);
+
+    // Don't leave a stale message up while the user is fixing the problem.
+    form.addEventListener('input', () => this.clearError(errorEl));
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
