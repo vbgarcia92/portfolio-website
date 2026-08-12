@@ -1,7 +1,7 @@
 // App shell: loads data, wires bottom-nav view switching, boots modules.
 
 const App = (function () {
-  const VIEW_TITLES = { home: 'Home', lifts: 'Lifts', workouts: 'Workouts' };
+  const VIEW_TITLES = { home: 'Home', lifts: 'Lifts', workouts: 'Workouts', diet: 'Diet' };
 
   const api = {
     data: loadData(),
@@ -14,6 +14,7 @@ const App = (function () {
       Lifts.render(api.data);
       SeventyFive.render(api.data);
       Workouts.render(api.data);
+      Diet.render(api.data);
     }
   };
 
@@ -35,6 +36,7 @@ const App = (function () {
     Lifts.bind(api);
     SeventyFive.bindEvents(api);
     Workouts.bindEvents(api);
+    Diet.bindEvents(api);
 
     api.save();
     api.renderAll();

@@ -100,6 +100,29 @@
         <div id="workouts-container"></div>
       </section>
 
+      <!-- Diet -->
+      <section id="view-diet" class="view">
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">Protein Today</h2>
+            <button id="edit-target-btn" class="btn btn-ghost btn-small">Target</button>
+          </div>
+          <div id="protein-summary"></div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Add a Meal</h2>
+          <div id="meal-picker" class="meal-picker"></div>
+        </div>
+
+        <div id="meals-container"></div>
+
+        <div class="card">
+          <h2 class="card-title">Last 7 Days</h2>
+          <div id="protein-history"></div>
+        </div>
+      </section>
+
     </main>
 
     <nav class="bottom-nav">
@@ -115,11 +138,17 @@
         <span class="nav-icon">📅</span>
         <span class="nav-label">Workouts</span>
       </button>
+      <button class="nav-btn" data-view="diet">
+        <span class="nav-icon">🍽</span>
+        <span class="nav-label">Diet</span>
+      </button>
     </nav>
 
   </div>
 
   <script src="js/storage.js"></script>
+  <script src="js/foods.js"></script>
+  <script src="js/diet.js"></script>
   <script src="js/lifts.js"></script>
   <script src="js/seventyfive.js"></script>
   <script src="js/workouts.js"></script>
