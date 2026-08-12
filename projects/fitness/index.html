@@ -8,6 +8,18 @@
 </head>
 <body>
 
+  <!-- Welcome splash. Removed from the DOM once dismissed. -->
+  <div id="splash" class="splash">
+    <div class="splash-inner">
+      <div class="mascot-frame">
+        <img id="mascot-img" class="mascot" src="assets/mascot.png" alt="" />
+        <span class="mascot-fallback" aria-hidden="true">🐒</span>
+      </div>
+      <h1 class="splash-title">Fitness &amp; Wellness Tracker</h1>
+      <p class="splash-sub">Let's get after it</p>
+    </div>
+  </div>
+
   <div class="phone">
 
     <header class="app-header">
@@ -146,6 +158,7 @@
 
   </div>
 
+  <script src="js/splash.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/foods.js"></script>
   <script src="js/diet.js"></script>
