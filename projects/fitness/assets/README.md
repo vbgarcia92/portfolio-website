@@ -2,20 +2,24 @@
 
 ## mascot.png
 
-The welcome splash looks for `mascot.png` in this folder. Until it exists the
-splash still runs and falls back to a 🐒 emoji, so nothing looks broken.
+The welcome splash shows this image on load. It is a 387×659 transparent PNG,
+cut out of the original gym photo so it sits directly on the app's dark
+background with no framing.
 
-Save the monkey picture here as `mascot.png`. The original three-pose image
-works as-is — the splash crops to a single figure.
+It was produced from `energetic_trainer_mascot.png` by:
 
-Which figure is shown is controlled by `--mascot-focus-x` in `style.css`
-(under `.mascot-frame`):
+1. Flood-filling the light backdrop inward from the border.
+2. Removing light areas the fill could not reach — the gap under the arm, the
+   hole in the kettlebell handle — identified by colour temperature, since the
+   backdrop is cool (blue ≥ red) while skin and teeth are warm or neutral.
+3. Keeping only the largest remaining shape, which drops the sliver of the next
+   figure at the right edge.
+4. Softening the cut edge, trimming to the subject, and quantising to 128
+   colours (358 KB → 44 KB, no visible banding).
 
-| Value | Pose shown |
-| ----- | ---------- |
-| `95%` | right-hand, standing (default) |
-| `50%` | middle, kettlebell press |
-| `5%`  | left-hand, kettlebell carry |
+To swap in a different mascot, save any transparent PNG here under the same
+name. A roughly portrait aspect works best; the frame is set to `387 / 659` in
+`style.css` under `.mascot-frame` and wants updating if yours differs a lot.
 
-If you drop in an image already cropped to one monkey, set
-`--mascot-focus-x: 50%` and `--mascot-fit: contain`.
+If the file is missing entirely the splash still runs and falls back to a 🐒
+emoji, so nothing looks broken.
