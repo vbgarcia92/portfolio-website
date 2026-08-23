@@ -113,11 +113,8 @@ body {
 }
 
 /* === WELCOME SPLASH ===
-   The mascot file may be the original three-pose picture, so the frame crops
-   to a single figure. --mascot-focus-x picks which one: 95% is the right-hand
-   pose, 50% the middle, 5% the left. If you drop in an image that is already
-   cropped to one monkey, set --mascot-focus-x to 50% and --mascot-fit to
-   contain. */
+   assets/mascot.png is a pre-cut transparent PNG, so it sits straight on the
+   app background with no framing or cropping needed. */
 .splash {
   position: fixed;
   inset: 0;
@@ -125,7 +122,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
+  background:
+    radial-gradient(120% 75% at 50% 18%, #1e2530 0%, rgba(30, 37, 48, 0) 70%),
+    var(--bg);
   opacity: 1;
   transition: opacity 0.4s ease;
   cursor: pointer;
@@ -148,24 +147,47 @@ body.splash-open {
 }
 
 .mascot-frame {
-  --mascot-focus-x: 95%;
-  --mascot-fit: cover;
-
-  width: 150px;
-  height: 340px;
-  max-height: 45vh;
-  overflow: hidden;
+  position: relative;
+  width: min(58vw, 215px);
+  aspect-ratio: 387 / 659;
+  max-height: 46vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   animation: mascot-in 0.75s cubic-bezier(0.34, 1.4, 0.5, 1) both;
 }
 
+/* Warm halo so the cut-out does not float on flat black. */
+.mascot-frame::before {
+  content: '';
+  position: absolute;
+  inset: -14% -32% -6%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+              rgba(74, 222, 128, 0.15), rgba(74, 222, 128, 0) 72%);
+}
+
+/* Grounding shadow under the feet. */
+.mascot-frame::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 58%;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+              rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 70%);
+}
+
 .mascot {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: var(--mascot-fit);
-  object-position: var(--mascot-focus-x) center;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
 }
 
 /* Stand-in used only when the mascot file is missing. */
@@ -184,8 +206,12 @@ body.splash-open {
 }
 
 .splash.no-mascot .mascot-frame {
-  height: auto;
   width: auto;
+  aspect-ratio: auto;
+}
+
+.splash.no-mascot .mascot-frame::after {
+  display: none;
 }
 
 .splash-title {
