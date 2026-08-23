@@ -12,7 +12,13 @@ function defaultData() {
       currentDay: 0,
       failed: false,
       days: []
-    }
+    },
+    diet: {
+      targetProtein: 170,
+      days: []
+    },
+    program: null,
+    programProgress: {}
   };
 }
 
