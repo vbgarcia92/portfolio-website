@@ -10,13 +10,15 @@ const SeventyFive = {
 
   TOTAL_DAYS: 75,
 
+  // Tailored rather than stock 75 Hard: the second workout is an IT study
+  // block, and the diet rule is protein plus creatine.
   TASKS: [
-    { key: 'workout1',        label: 'Workout 1',    detail: '45 minutes' },
-    { key: 'workout2Outdoor', label: 'Workout 2',    detail: '45 minutes, outdoors' },
-    { key: 'diet',            label: 'Follow diet',  detail: 'No alcohol, no cheat meals' },
-    { key: 'water',           label: 'Drink water',  detail: '3.8 L' },
-    { key: 'reading',         label: 'Read',         detail: '10 pages, non-fiction' },
-    { key: 'photo',           label: 'Progress photo', detail: 'Taken today' }
+    { key: 'workout1', label: 'Workout',         detail: '45 minutes' },
+    { key: 'itStudy',  label: 'IT study',        detail: '45 minutes' },
+    { key: 'diet',     label: 'Follow diet',     detail: '160 g protein + creatine' },
+    { key: 'water',    label: 'Drink water',     detail: '3.8 L' },
+    { key: 'reading',  label: 'Read',            detail: '10 pages, non-fiction' },
+    { key: 'photo',    label: 'Progress photo',  detail: 'Taken today' }
   ],
 
   // --- date helpers (UTC math so DST can't shift day counts) ------------
