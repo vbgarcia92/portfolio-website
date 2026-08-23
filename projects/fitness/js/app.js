@@ -15,6 +15,7 @@ const App = (function () {
       SeventyFive.render(api.data);
       Workouts.render(api.data);
       Diet.render(api.data);
+      Program.render(api.data);
     }
   };
 
@@ -37,6 +38,7 @@ const App = (function () {
     SeventyFive.bindEvents(api);
     Workouts.bindEvents(api);
     Diet.bindEvents(api);
+    Program.bindEvents(api);
 
     api.save();
     api.renderAll();

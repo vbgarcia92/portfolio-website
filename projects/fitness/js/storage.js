@@ -16,7 +16,9 @@ function defaultData() {
     diet: {
       targetProtein: 170,
       days: []
-    }
+    },
+    program: null,
+    programProgress: {}
   };
 }
 

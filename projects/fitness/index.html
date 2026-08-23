@@ -85,31 +85,49 @@
 
       <!-- Workouts -->
       <section id="view-workouts" class="view">
+
+        <div id="program-timeline" class="timeline"></div>
+
+        <div id="program-container"></div>
+
         <div class="card">
           <div class="card-head">
-            <h2 class="card-title">Plan a Workout</h2>
-            <button id="add-workout-toggle" class="btn btn-small">+ Add</button>
+            <h2 class="card-title">Training Program</h2>
+            <button id="clear-program-btn" class="btn btn-ghost btn-small btn-danger">Clear</button>
           </div>
-
-          <form id="add-workout-form" class="inline-form hidden">
-            <input type="text" id="new-workout-name" placeholder="Workout name (e.g. Push Day)"
-                   maxlength="40" autocomplete="off" />
-            <input type="date" id="new-workout-date" />
-
-            <div id="exercise-rows"></div>
-            <button type="button" id="add-exercise-row" class="btn btn-ghost btn-small">
-              + Add exercise
-            </button>
-
-            <p class="form-error hidden" id="add-workout-error"></p>
-            <div class="form-actions">
-              <button type="button" class="btn btn-ghost" id="cancel-workout-btn">Cancel</button>
-              <button type="submit" class="btn btn-primary">Save Workout</button>
-            </div>
-          </form>
+          <label class="file-drop">
+            <input type="file" id="program-file" accept="application/json,.json" />
+            <span class="file-drop-text">Import a program (.json)</span>
+          </label>
+          <p id="import-status" class="import-status hidden"></p>
         </div>
 
-        <div id="workouts-container"></div>
+        <details class="card one-off">
+          <summary class="one-off-summary">One-off workouts</summary>
+
+          <div class="one-off-body">
+            <button id="add-workout-toggle" class="btn btn-small">+ Add</button>
+
+            <form id="add-workout-form" class="inline-form hidden">
+              <input type="text" id="new-workout-name" placeholder="Workout name (e.g. Push Day)"
+                     maxlength="40" autocomplete="off" />
+              <input type="date" id="new-workout-date" />
+
+              <div id="exercise-rows"></div>
+              <button type="button" id="add-exercise-row" class="btn btn-ghost btn-small">
+                + Add exercise
+              </button>
+
+              <p class="form-error hidden" id="add-workout-error"></p>
+              <div class="form-actions">
+                <button type="button" class="btn btn-ghost" id="cancel-workout-btn">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Workout</button>
+              </div>
+            </form>
+
+            <div id="workouts-container"></div>
+          </div>
+        </details>
       </section>
 
       <!-- Diet -->
@@ -162,6 +180,7 @@
   <script src="js/storage.js"></script>
   <script src="js/foods.js"></script>
   <script src="js/diet.js"></script>
+  <script src="js/program.js"></script>
   <script src="js/lifts.js"></script>
   <script src="js/seventyfive.js"></script>
   <script src="js/workouts.js"></script>
