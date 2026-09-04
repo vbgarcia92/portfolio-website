@@ -461,29 +461,7 @@ body.splash-open {
   transition: width 0.25s ease;
 }
 
-/* === RESET BANNER === */
-.banner {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: #3a1d1d;
-  border: 1px solid #6b2b2b;
-  border-radius: 12px;
-  padding: 0.75rem 0.85rem;
-  font-size: 0.87rem;
-  color: #fecaca;
-}
-
-.banner p {
-  flex: 1;
-}
-
-.banner .btn {
-  flex-shrink: 0;
-  color: #fecaca;
-}
-
-/* === 75 HARD CHECKLIST === */
+/* === DAILY CHECKLIST === */
 .task-list {
   list-style: none;
 }
@@ -561,6 +539,105 @@ body.splash-open {
 .task-row.is-done .task-name {
   color: var(--text-dim);
   text-decoration: line-through;
+}
+
+/* The pre-start / post-finish preview shows the rules without offering a
+   checkbox, so the empty boxes must not read as tappable. */
+.task-list.is-preview {
+  margin-top: 0.5rem;
+  opacity: 0.65;
+}
+
+.task-list.is-preview .task-label {
+  cursor: default;
+  min-height: 40px;
+}
+
+/* === HABIT CONSISTENCY === */
+.stat-caption {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.stat-list {
+  list-style: none;
+  margin: 0.75rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.stat-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.stat-name {
+  font-size: 0.9rem;
+}
+
+.stat-pct {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-track {
+  margin-top: 0.3rem;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.stat-sub {
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 3px;
+}
+
+.grid-cell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+}
+
+.grid-cell.is-future {
+  background: transparent;
+}
+
+/* Shading steps with the number of tasks ticked that day: nothing, a couple,
+   most, five, then all six. */
+.grid-cell.lvl-1 { background: #14532d; border-color: #14532d; }
+.grid-cell.lvl-2 { background: #166534; border-color: #166534; }
+.grid-cell.lvl-3 { background: var(--accent-dim); border-color: var(--accent-dim); }
+.grid-cell.lvl-4 { background: var(--accent); border-color: var(--accent); }
+
+.grid-cell.is-today {
+  outline: 2px solid var(--text);
+  outline-offset: 1px;
+}
+
+.grid-caption {
+  margin-top: 0.6rem;
 }
 
 /* === WORKOUTS === */

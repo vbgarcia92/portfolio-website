@@ -12,7 +12,7 @@ const App = (function () {
 
     renderAll() {
       Lifts.render(api.data);
-      SeventyFive.render(api.data);
+      Challenge.render(api.data);
       Workouts.render(api.data);
       Diet.render(api.data);
       Program.render(api.data);
@@ -35,7 +35,7 @@ const App = (function () {
     });
 
     Lifts.bind(api);
-    SeventyFive.bindEvents(api);
+    Challenge.bindEvents(api);
     Workouts.bindEvents(api);
     Diet.bindEvents(api);
     Program.bindEvents(api);
