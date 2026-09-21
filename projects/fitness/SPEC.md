@@ -35,7 +35,7 @@ A single-page, mobile-style personal tracker to (a) log my main lift numbers and
 
 - Personal use only, runs on my machine / phone browser. **No accounts, no backend, no cloud.**
 - Units in **kg**. Water target **3 L**. Protein target **160 g**.
-- Challenge start date is fixed at **7 September 2026** and runs 90 days (through 5 December 2026).
+- Challenge start date is fixed at **22 September 2026** and runs 90 days (through 20 December 2026).
 - Keep it lightweight — this lives alongside my other small projects.
 
 ## 4. Tech stack _(my recommendation — confirm or override)_

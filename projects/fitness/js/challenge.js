@@ -11,7 +11,7 @@
 const Challenge = {
 
   TOTAL_DAYS: 90,
-  START_DATE: '2026-09-07',
+  START_DATE: '2026-09-22',
 
   TASKS: [
     { key: 'workout', label: 'Workout',          detail: 'One session' },
