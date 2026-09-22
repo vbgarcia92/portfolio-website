@@ -28,6 +28,7 @@ A single-page, mobile-style personal tracker to (a) log my main lift numbers and
 - [ ] I can tick off the 6 daily challenge tasks; the app shows the current day (1–90), counted from a fixed start date.
 - [ ] Missing a task never resets anything — a slip costs that day's tick and nothing more.
 - [ ] A dashboard shows the completion % of each task across the days elapsed, so the consistency of each individual habit is visible.
+- [ ] I can step back to any earlier day and tick it off, for evenings I finish too late to log.
 - [ ] Data persists between sessions (closing the tab doesn't wipe it).
 - [ ] Looks and feels like a phone app on a mobile screen.
 
@@ -52,6 +53,7 @@ A single-page, mobile-style personal tracker to (a) log my main lift numbers and
 - Lifts module: list of lifts, edit current weight, view PR history.
 - 90 Day Challenge daily checklist + day counter.
 - Per-habit consistency dashboard (% completion per task across elapsed days).
+- Day navigator: step back through days already elapsed and edit them.
 - localStorage persistence.
 
 **P1 — next**
@@ -81,9 +83,11 @@ the dashboard instead of dropping out of the denominator.
 
 **90 Day Challenge rules to encode:** one workout, 3 L water, 160 g protein, 10 pages read, 1 hour on a personal project, floss + creatine. All 6 ticked marks the day complete. **Missing a task never resets the challenge** — the day simply isn't complete, and the run continues. The score is the per-task completion percentage across the days elapsed.
 
+**Editing earlier days:** every day that has already begun stays editable, with no cutoff — tasks finished late in the evening often get logged the next morning. Which day the checklist is pointed at is transient UI state, not stored, so the app always reopens on today. Future days are never reachable.
+
 ## 7. Screens
 
-- **Home** — day counter, today's checklist, the habit consistency dashboard, plus a quick glance at top lifts.
+- **Home** — day counter, the checklist with its day navigator, the habit consistency dashboard, plus a quick glance at top lifts.
 - **Lifts** — full list, add/edit, PR history.
 - **Workouts** — upcoming list, add, mark done.
 - (Tab or bottom-nav style switching between the three.)
@@ -105,6 +109,7 @@ Login/accounts, cloud sync, notifications/reminders, social features, any backen
 
 - Refresh the page → all data still there.
 - Tick all 6 tasks → day counts as complete; leave one unticked and roll the date → the day stays incomplete, the challenge carries on, and that task's percentage drops.
+- Step back a day, tick a task, refresh → the edit landed on that earlier day, and the app reopens on today.
 - Add a lift with a new PR → history updates, current weight reflects latest.
 - Resize to phone width → no horizontal scroll, tap targets usable.
 
