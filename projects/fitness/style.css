@@ -461,6 +461,77 @@ body.splash-open {
   transition: width 0.25s ease;
 }
 
+/* === DAY NAVIGATOR === */
+.day-nav {
+  margin-bottom: 0.35rem;
+}
+
+.day-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.day-nav-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.day-nav-btn:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.day-nav-btn:not(:disabled):active {
+  background: var(--border);
+}
+
+.day-nav-mid {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.day-nav-day {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.day-nav-date {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* Only shown while an earlier day is open, so the checklist is never
+   mistaken for today's. */
+.past-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.4rem 0.35rem 0.7rem;
+  border-radius: 10px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.past-note .btn {
+  flex-shrink: 0;
+}
+
 /* === DAILY CHECKLIST === */
 .task-list {
   list-style: none;
@@ -631,7 +702,12 @@ body.splash-open {
 .grid-cell.lvl-3 { background: var(--accent-dim); border-color: var(--accent-dim); }
 .grid-cell.lvl-4 { background: var(--accent); border-color: var(--accent); }
 
-.grid-cell.is-today {
+button.grid-cell {
+  padding: 0;
+  cursor: pointer;
+}
+
+.grid-cell.is-selected {
   outline: 2px solid var(--text);
   outline-offset: 1px;
 }
